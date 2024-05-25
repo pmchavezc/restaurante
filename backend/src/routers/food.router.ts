@@ -3,8 +3,9 @@ import { sample_foods, sample_tags } from '../data';
 import asyncHandler from 'express-async-handler';
 import { FoodModel } from '../models/food.model';
 const router = Router();
+const Food = require('../models/food.model');
 
-router.get(
+/*router.get(
   '/seed',
   asyncHandler(async (req, res) => {
     const foodsCount = await FoodModel.countDocuments();
@@ -17,6 +18,25 @@ router.get(
     res.send('Seed Is Done!');
   })
 );
+*/
+
+router.get(
+    '/seed',
+    asyncHandler(async (req, res) => {
+        const foodsCount = await Food.count();
+        if (foodsCount > 0) {
+            res.send('Seed is already done!');
+            return;
+        }
+
+        await Food.bulkCreate(sample_foods);
+        res.send('Seed Is Done!');
+    })
+);
+
+
+
+
 
 router.get(
   '/',
@@ -26,6 +46,8 @@ router.get(
   })
 );
 
+
+
 router.get(
   '/search/:searchTerm',
   asyncHandler(async (req, res) => {
@@ -34,6 +56,8 @@ router.get(
     res.send(foods);
   })
 );
+
+
 
 router.get(
   '/tags',
@@ -67,6 +91,7 @@ router.get(
   })
 );
 
+
 router.get(
   '/tag/:tagName',
   asyncHandler(async (req, res) => {
@@ -74,6 +99,8 @@ router.get(
     res.send(foods);
   })
 );
+
+
 
 router.get(
   '/:foodId',
@@ -84,3 +111,5 @@ router.get(
 );
 
 export default router;
+// se agrego el export default router;
+module.exports = router;

@@ -6,7 +6,7 @@ export interface User{
     password: string;
     name:string;
     address:string;
-    isadmin:boolean;//se renombra isAdmin por isadmin ya que las mayusculas dan error en postgres
+    isadmin:boolean;
 }
 
 export const UserSchema = new Schema<User>({
