@@ -10,7 +10,7 @@ export const sample_foods: Food[] = [
     favorite: false,
     origins: ['italy'],
     stars: 4.5,
-    imageUrl: 'assets/food-1.jpg',
+    imageurl: 'assets/food-1.jpg',
     tags: ['FastFood', 'Pizza', 'Lunch'],
   },
   {
@@ -21,7 +21,7 @@ export const sample_foods: Food[] = [
     favorite: true,
     origins: ['persia', 'middle east', 'china'],
     stars: 4.7,
-    imageUrl: 'assets/food-2.jpg',
+    imageurl: 'assets/food-2.jpg',
     tags: ['SlowFood', 'Lunch'],
   },
   {
@@ -32,7 +32,7 @@ export const sample_foods: Food[] = [
     favorite: false,
     origins: ['germany', 'us'],
     stars: 3.5,
-    imageUrl: 'assets/food-3.jpg',
+    imageurl: 'assets/food-3.jpg',
     tags: ['FastFood', 'Hamburger'],
   },
   {
@@ -43,7 +43,7 @@ export const sample_foods: Food[] = [
     favorite: true,
     origins: ['belgium', 'france'],
     stars: 3.3,
-    imageUrl: 'assets/food-4.jpg',
+    imageurl: 'assets/food-4.jpg',
     tags: ['FastFood', 'Fry'],
   },
   {
@@ -54,7 +54,7 @@ export const sample_foods: Food[] = [
     favorite: false,
     origins: ['india', 'asia'],
     stars: 3.0,
-    imageUrl: 'assets/food-5.jpg',
+    imageurl: 'assets/food-5.jpg',
     tags: ['SlowFood', 'Soup'],
   },
   {
@@ -65,7 +65,7 @@ export const sample_foods: Food[] = [
     favorite: false,
     origins: ['italy'],
     stars: 4.0,
-    imageUrl: 'assets/food-6.jpg',
+    imageurl: 'assets/food-6.jpg',
     tags: ['FastFood', 'Pizza', 'Lunch'],
   },
 ]

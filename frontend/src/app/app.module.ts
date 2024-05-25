@@ -30,6 +30,7 @@ import { PaymentPageComponent } from './components/pages/payment-page/payment-pa
 import { PaypalButtonComponent } from './components/partials/paypal-button/paypal-button.component';
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 import { StarRatingComponent } from './components/partials/star-rating/star-rating.component';
+import {NgOptimizedImage} from "@angular/common";
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,18 +57,19 @@ import { StarRatingComponent } from './components/partials/star-rating/star-rati
     OrderTrackPageComponent,
     StarRatingComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      newestOnTop:false
-    })
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        ToastrModule.forRoot({
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right',
+            newestOnTop: false
+        }),
+        NgOptimizedImage
+    ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi: true },
     {provide:HTTP_INTERCEPTORS, useClass:LoadingInterceptor, multi: true }

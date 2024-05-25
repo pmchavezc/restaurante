@@ -31,11 +31,11 @@ export const OrderItemSchema = new Schema<OrderItem>(
 export interface Order{
     id:string;
     items: OrderItem[];
-    totalPrice:number;
+    totalprice:number;//se renombra totalPrice por totalprice ya que las mayusculas dan error en postgres
     name: string;
     address: string;
     addressLatLng:LatLng
-    paymentId: string;
+    paymentid: string;//se renombra paymentId por paymentid ya que las mayusculas dan error en postgres
     status: OrderStatus;
     user: Types.ObjectId;
     createdAt: Date;
@@ -46,8 +46,8 @@ export interface Order{
       name: {type: String, required: true},
       address: {type: String, required: true},
       addressLatLng: {type: LatLngSchema, required: true},
-      paymentId: {type: String},
-      totalPrice: {type: Number, required: true},
+      paymentid: {type: String},
+      totalprice: {type: Number, required: true},
       items: {type: [OrderItemSchema], required: true},
       status: {type: String, default: OrderStatus.NEW},
       user: {type: Schema.Types.ObjectId, required: true}

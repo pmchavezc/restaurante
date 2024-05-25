@@ -6,7 +6,7 @@ export interface User{
     password: string;
     name:string;
     address:string;
-    isadmin:boolean;
+    isadmin:boolean;//se renombra isAdmin por isadmin ya que las mayusculas dan error en postgres
 }
 
 export const UserSchema = new Schema<User>({
@@ -25,4 +25,4 @@ export const UserSchema = new Schema<User>({
     }
 });
 
-export const UserModel = model<User>('user', UserSchema);
+export const UserModel = model<User>('user',UserSchema);

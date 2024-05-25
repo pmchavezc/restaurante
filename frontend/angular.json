@@ -127,6 +127,6 @@
   },
   "defaultProject": "frontend",
   "cli": {
-    "analytics": "f22eff37-74cb-4849-9d4c-a9d71db2aff7"
+    "analytics": false
   }
 }

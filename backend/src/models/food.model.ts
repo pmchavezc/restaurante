@@ -1,15 +1,15 @@
 import {Schema, model} from 'mongoose';
 
 export interface Food{
-    id:string;
+    id:number;
     name:string;
     price:number;
     tags: string[];
     favorite:boolean;
     stars: number;
-    imageUrl: string;
+    imageUrl: string; //se renombra imageUrl por imageurl ya que las mayusculas dan error en postgres
     origins: string[];
-    cookTime:string;
+    cooktime:string; //se renombra cookTime por cooktime ya que las mayusculas dan error en postgres
 }
 
 export const FoodSchema = new Schema<Food>(
@@ -21,7 +21,7 @@ export const FoodSchema = new Schema<Food>(
         stars: {type: Number, required:true},
         imageUrl: {type: String, required:true},
         origins: {type: [String], required:true},
-        cookTime: {type: String, required:true}
+        cooktime: {type: String, required:true}
     },{
         toJSON:{
             virtuals: true

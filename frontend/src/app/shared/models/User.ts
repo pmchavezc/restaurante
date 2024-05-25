@@ -4,5 +4,5 @@ export class User{
   name!:string;
   address!:string;
   token!:string;
-  isAdmin!:boolean;
+  isadmin!:boolean;
 }
