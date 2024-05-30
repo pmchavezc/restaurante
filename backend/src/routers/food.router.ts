@@ -109,17 +109,18 @@ router.get('/tags', async (req, res) => {
 router.get(
     '/tag/:tagName', // Este endpoint busca alimentos por su etiqueta
     asyncHandler(async (req, res) => { //se cambió el endpoint para que funcione con postgres
-        const { tags } = req.body;
+        const { tagName } = req.params;
+        console.log("tag to search: ", tagName);
         try {
-            const food: QueryResult = await pool.query('SELECT * FROM food WHERE tags = $1', [tags])
+            const food: QueryResult = await pool.query('SELECT * FROM food WHERE $1 = ANY(tags)', [tagName]);
             if (food.rows.length === 0) {
-                console.log(food.rows);
                 res.status(404).json('Alimento no encontrado');
                 return;
             }
             console.log(food.rows);
             res.status(200).json(food.rows);
-        } catch (error) {
+        }
+        catch (error) {
             console.error('Error al buscar el alimento:', error);
             res.status(500).json('Error al buscar el alimento');
         }
