@@ -8,9 +8,19 @@
     "dev": "cd frontend && npm start & cd backend && npm start",
     "start": "cd backend/built && node server.js",
     "prebuild": "cd backend && npm run build",
-    "build": "cd frontend && npm run build"
+    "build": "npm install && npm run build:backend && npm run build:frontend && npm run postbuild",
+    "build:backend": "cd backend && npm install && tsc",
+    "build:frontend": "cd frontend && npm install --force && npx ng build --configuration production",
+    "postbuild": "mkdir -p backend/built/public && cp -R frontend/dist/frontend/* backend/built/public"
   },
   "dependencies": {
+    "pg": "^8.11.5",
     "postgres": "^3.4.4"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.6",
+    "@angular/cli": "^16.0.0" 
   }
 }
+
+

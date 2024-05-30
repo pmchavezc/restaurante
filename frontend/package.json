@@ -21,7 +21,6 @@
     "@angular/router": "~16.0.1",
     "@types/leaflet": "^1.9.3",
     "@types/node": "^20.1.7",
-    "buil": "^0.0.0",
     "leaflet": "^1.9.3",
     "ngx-toastr": "^17.0.2",
     "rxjs": "~7.8.1",
