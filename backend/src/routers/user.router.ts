@@ -57,13 +57,13 @@ router.post("/login", asyncHandler(//se cambió el endpoint para que funcione co
 //se modificó el endpoint para que guarde los datos del usuario en BD postgres
 router.post('/register', asyncHandler(
     async (req, res) => {
-        const {name, email, password, address} = req.body;
+        const {userName, email, password, address} = req.body;
         const encryptedPassword = await bcrypt.hash(password, 10);
 
         //constante que guarda los datos del usuario en la BD, espera la respuesta de la BD
         //se cambiaron las variables con mayusculas por minusculas ya que se cambió de mongo a postgres y provoca error
         // name, email, password, address, isadmin
-          const dbUser = await pool.query('INSERT INTO "user" (name, email, password, address, isadmin) VALUES ($1, $2, $3, $4, $5) RETURNING *', [name, email, encryptedPassword, address, false]);
+          const dbUser = await pool.query('INSERT INTO "user" (name, email, password, address, isadmin) VALUES ($1, $2, $3, $4, $5) RETURNING *', [userName, email, encryptedPassword, address, false]);
 
         res.json(generateTokenReponse(dbUser));
     }

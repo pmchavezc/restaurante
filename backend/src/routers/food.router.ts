@@ -58,15 +58,16 @@ router.get(
 router.get(
     '/search/:searchTerm',// Este endpoint busca alimentos por su nombre
     asyncHandler(async (req, res) => { //se cambió el endpoint para que funcione con postgres
-        const { name } = req.body;
+        const { searchTerm } = req.params;
         try {
-            const food = await pool.query('SELECT * FROM food WHERE name = $1', [name])
+
+            const food: QueryResult = await pool.query('SELECT * FROM food WHERE name ILIKE $1', [`%${searchTerm}%`]);
             if (food.rows.length === 0) {
                 res.status(404).json('Alimento no encontrado');
                 return;
             }
-            console.log(food.rows[0]);
-            res.status(200).json(food.rows[0]);
+            console.log(food.rows);
+            res.status(200).json(food.rows);
         } catch (error) {
             console.error('Error al buscar el alimento:', error);
             res.status(500).json('Error al buscar el alimento');

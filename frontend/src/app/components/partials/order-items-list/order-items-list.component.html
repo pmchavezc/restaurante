@@ -6,33 +6,31 @@
   </tr>
   <tr *ngFor="let item of order.items">
     <td>
-      <a routerLink="/food/{{item.food.id}}">
-        <img [src]="item.food.imageurl"/>
+      <a routerLink="/food/{{ item.food.id }}">
+        <img [src]="item.food.imageurl" />
       </a>
     </td>
     <td>
-      {{item.food.name}}
+      {{ item.food.name }}
     </td>
     <td>
-      {{item.food.price | currency}}
+      {{ item.food.price | currency }}
     </td>
     <td>
-      {{item.quantity}}
+      {{ item.quantity }}
     </td>
     <td>
-      {{item.price | currency}}
+      {{ item.price | currency }}
     </td>
   </tr>
   <tr>
     <td colspan="3"></td>
     <td>
-      <strong>
-        Total :
-      </strong>
+      <strong> Total : </strong>
     </td>
     <td>
       <strong>
-        {{order.totalPrice | currency}}
+        {{ order.totalPrice | currency }}
       </strong>
     </td>
   </tr>

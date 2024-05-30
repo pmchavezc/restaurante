@@ -8,11 +8,10 @@ import { PasswordsMatchValidator } from 'src/app/shared/validators/password_matc
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.css']
+  styleUrls: ['./register-page.component.css'],
 })
 export class RegisterPageComponent implements OnInit {
-
-  registerForm!:FormGroup;
+  registerForm!: FormGroup;
   isSubmitted = false;
 
   returnUrl = '';
@@ -21,42 +20,44 @@ export class RegisterPageComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
-      confirmPassword: ['', Validators.required],
-      address: ['', [Validators.required, Validators.minLength(10)]]
-    },{
-      validators: PasswordsMatchValidator('password','confirmPassword')
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        userName: ['', [Validators.required, Validators.minLength(5)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        confirmPassword: ['', Validators.required],
+        address: ['', [Validators.required, Validators.minLength(10)]],
+      },
+      {
+        validators: PasswordsMatchValidator('password', 'confirmPassword'),
+      }
+    );
 
-    this.returnUrl= this.activatedRoute.snapshot.queryParams.returnUrl;
+    this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl;
   }
 
   get fc() {
     return this.registerForm.controls;
   }
 
-  submit(){
+  submit() {
     this.isSubmitted = true;
-    if(this.registerForm.invalid) return;
+    if (this.registerForm.invalid) return;
 
-    const fv= this.registerForm.value;
-    const user :IUserRegister = {
-      name: fv.name,
+    const fv = this.registerForm.value;
+    const user: IUserRegister = {
+      userName: fv.userName,
       email: fv.email,
       password: fv.password,
       confirmPassword: fv.confirmPassword,
-      address: fv.address
+      address: fv.address,
     };
 
-    this.userService.register(user).subscribe(_ => {
+    this.userService.register(user).subscribe((_) => {
       this.router.navigateByUrl(this.returnUrl);
-    })
+    });
   }
-
 }

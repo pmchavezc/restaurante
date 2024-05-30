@@ -1,7 +1,7 @@
-export interface IUserRegister{
-  name : string;
-  email : string;
-  password : string;
-  confirmPassword : string;
+export interface IUserRegister {
+  userName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
   address: string;
 }
